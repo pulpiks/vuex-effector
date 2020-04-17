@@ -38,7 +38,16 @@
     </v-app-bar>
 
     <v-content>
-      <Form />
+      <router-link to="/">
+        <p class="subheading">Main</p>
+      </router-link>
+      <router-link to="/example1">
+        <p class="subheading">Vuex</p>
+      </router-link>
+        <router-link to="/example2">
+        <p class="subheading">Effector</p>
+      </router-link>
+      <router-view />
       <HelloWorld/>
     </v-content>
   </v-app>
@@ -47,14 +56,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
-import Form from './components/Form/Form.vue'
 
 export default Vue.extend({
   name: 'App',
 
   components: {
-    HelloWorld,
-    Form
+    HelloWorld
   },
 
   data: () => ({

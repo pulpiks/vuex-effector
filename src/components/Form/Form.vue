@@ -2,6 +2,7 @@
   <div>
     <div class="mt-3">
       <v-badge
+      v-if="counter>0"
       color="success"
       :content="counter"
       :value="counter"
