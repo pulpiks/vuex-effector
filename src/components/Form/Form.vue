@@ -1,11 +1,17 @@
 <template>
   <div>
-    <v-badge
-      color="green"
-      content="6"
+    <div class="mt-3">
+      <v-badge
+      color="success"
+      :content="counter"
+      :value="counter"
+      dark
+      grow
     >
-      Counter of Submits
+      Total requests
     </v-badge>
+    </div>
+
     <v-form
       ref="form"
       v-model="isValid"
@@ -13,7 +19,7 @@
       @input="validate"
     >
       <v-text-field
-        v-model="title"
+        v-model="formValues.title"
         :error-messages="errors['title']"
         :counter="30"
         :rules="rules['title']"
@@ -21,7 +27,7 @@
         required
       ></v-text-field>
       <v-text-field
-        v-model="description"
+        v-model="formValues.description"
         :error-messages="errors['description']"
         label="Description"
         required
@@ -35,42 +41,48 @@
 </template>
 
 <script lang="ts">
+import { createRequest } from '../../store/actions/request'
 /* eslint-disable no-debugger */
 
 export default {
 
-  data: () => ({
-    title: '',
-    description: '',
-    errors: {},
-    isValid: false,
-    rules: {
-      title: [
-        (v: string) => !!v || 'Title is required',
-        (v: string) => (v && v.length <= 30) || 'Title must be less than 10 characters'],
-      description: [
-        (v: string) => !!v || 'Description is required'
-      ]
+  data () {
+    debugger
+    const state = this.$store.state
+    console.log(state.requests.length)
+    return {
+      formValues: {
+        title: '',
+        description: ''
+      },
+      errors: {},
+      isValid: false,
+      rules: {
+        title: [
+          (v: string) => !!v || 'Title is required',
+          (v: string) => (v && v.length <= 30) || 'Title must be less than 10 characters'],
+        description: [
+          (v: string) => !!v || 'Description is required'
+        ]
+      }
     }
-  }),
+  },
 
   computed: {
+    counter () { return this.$store.state.requests.length }
   },
 
   methods: {
     validate (isValid: boolean) {
       console.log(isValid)
-      const formValues = {
-        title: this.title,
-        description: this.description
-      }
-      console.log(formValues)
+      console.log(this.formValues)
       // eslint-disable-next-line no-debugger
       debugger
     },
     submit () {
       debugger
       console.log(123)
+      this.$store.dispatch(createRequest, this.formValues)
       // submit
     },
     clear () {
