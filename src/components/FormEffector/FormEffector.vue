@@ -5,7 +5,7 @@
       v-if="counter>0"
       color="success"
       :content="counter"
-      :value="counter"
+      :value="state.counter"
       dark
       grow
     >
@@ -42,7 +42,10 @@
 </template>
 
 <script lang="ts">
-import { createRequest } from '../../store/actions/request'
+import { combine } from 'effector'
+import {
+  store, counter, createRequestEvent, resetRequestEvent
+} from '@/storeEffector'
 /* eslint-disable no-debugger */
 
 export default {
@@ -68,9 +71,24 @@ export default {
       }
     }
   },
+  effector () {
+    // would create `state` in template
+    debugger
+    return combine(
+      counter,
+      store,
+      (counter, store) => {
+        debugger
+        return {
+          ...store,
+          counter
+        }
+      }
+    )
+  },
 
   computed: {
-    counter () { return this.$store.state.requests.length }
+    counter (): number { return this.$store.state.requests.length }
   },
 
   methods: {
@@ -81,14 +99,11 @@ export default {
       debugger
     },
     submit () {
-      debugger
-      console.log(123)
-      this.$store.dispatch(createRequest, this.formValues)
-      // submit
+      createRequestEvent(this.formValues)
     },
     clear () {
-      this.$refs.form.reset()
       // clear form
+      resetRequestEvent()
     }
   }
 }

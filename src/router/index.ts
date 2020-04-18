@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
-import Example1 from '../components/Form/Form.vue'
+import Example1 from '../components/FormVuex/FormVuex.vue'
+import Example2 from '../components/FormEffector/FormEffector.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes: Array<RouteConfig> = [
     path: '/example1',
     name: 'example1',
     component: Example1
+  },
+  {
+    path: '/example2',
+    name: 'example2',
+    component: Example2
   },
   {
     path: '/about',
