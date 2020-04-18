@@ -42,13 +42,13 @@
 
 <script lang="ts">
 import { combine } from 'effector'
+import { createComponent } from 'effector-vue'
 import {
-  store, counter, createRequestEvent, resetRequestEvent
+  store, createRequestEvent, resetRequestEvent
 } from '@/storeEffector'
 /* eslint-disable no-debugger */
 
-export default {
-
+export default createComponent({
   data () {
     return {
       formValues: {
@@ -67,19 +67,6 @@ export default {
       }
     }
   },
-  effector () {
-    // would create `state` in template
-    return combine(
-      counter,
-      store,
-      (counter, store) => {
-        return {
-          ...store,
-          counter
-        }
-      }
-    )
-  },
 
   methods: {
     validate (isValid: boolean) {
@@ -93,5 +80,5 @@ export default {
       resetRequestEvent()
     }
   }
-}
+}, store)
 </script>

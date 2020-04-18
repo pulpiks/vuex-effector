@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Example1 from '../components/FormVuex/FormVuex.vue'
 import Example2 from '../components/FormEffector/FormEffector.vue'
+import Example3 from '../components/FormEffector/FormEffector1.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes: Array<RouteConfig> = [
     path: '/example2',
     name: 'example2',
     component: Example2
+  },
+  {
+    path: '/example3',
+    name: 'example3',
+    component: Example3
   },
   {
     path: '/about',

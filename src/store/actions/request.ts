@@ -11,7 +11,6 @@ export type TRequestPayload = {
 export default {
   [createRequest] ({ commit }: ActionContext<S, any>, payload: TRequestPayload) {
     // eslint-disable-next-line no-debugger
-    debugger
     commit(createRequest, payload)
   }
 }

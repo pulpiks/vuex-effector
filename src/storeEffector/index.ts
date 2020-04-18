@@ -18,7 +18,7 @@ export const authStore = createStore(userState)
   .on(logout, (_, data) => userState)
   .reset(resetAuth)
 
-// RequestsStore.watch(console.log)
+// authStore.watch(console.log)
 
 export const counter = createStore(0)
   .on(createRequestEvent, (state) => state + 1)

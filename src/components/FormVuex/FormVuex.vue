@@ -2,10 +2,9 @@
   <div>
     <div class="mt-3">
       <v-badge
-      v-if="counter>0"
+      data-test="counter"
       color="success"
       :content="counter"
-      :value="counter"
       dark
       grow
     >
@@ -20,6 +19,7 @@
       @input="validate"
     >
       <v-text-field
+        id="title"
         v-model="formValues.title"
         :error-messages="errors['title']"
         :counter="30"
@@ -28,6 +28,7 @@
         required
       ></v-text-field>
       <v-text-field
+        id="description"
         v-model="formValues.description"
         :error-messages="errors['description']"
         label="Description"
@@ -48,9 +49,7 @@ import { createRequest } from '../../store/actions/request'
 export default {
 
   data () {
-    debugger
     const state = this.$store.state
-    console.log(state.requests.length)
     return {
       formValues: {
         title: '',
@@ -75,20 +74,13 @@ export default {
 
   methods: {
     validate (isValid: boolean) {
-      console.log(isValid)
-      console.log(this.formValues)
-      // eslint-disable-next-line no-debugger
-      debugger
+      this.isValid = isValid
     },
     submit () {
-      debugger
-      console.log(123)
       this.$store.dispatch(createRequest, this.formValues)
-      // submit
     },
     clear () {
       this.$refs.form.reset()
-      // clear form
     }
   }
 }

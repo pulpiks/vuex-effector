@@ -44,8 +44,11 @@
       <router-link to="/example1">
         <p class="subheading">Vuex</p>
       </router-link>
-        <router-link to="/example2">
+      <router-link to="/example2">
         <p class="subheading">Effector</p>
+      </router-link>
+      <router-link to="/example3">
+        <p class="subheading">Initialize Effector using createComponent</p>
       </router-link>
       <router-view />
       <HelloWorld/>
