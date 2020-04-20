@@ -44,7 +44,6 @@
 
 <script lang="ts">
 import { createRequest } from '../../store/actions/request'
-/* eslint-disable no-debugger */
 
 export default {
 

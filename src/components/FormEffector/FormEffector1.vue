@@ -46,7 +46,6 @@ import { createComponent } from 'effector-vue'
 import {
   store, createRequestEvent, resetRequestEvent
 } from '@/storeEffector'
-/* eslint-disable no-debugger */
 
 export default createComponent({
   data () {

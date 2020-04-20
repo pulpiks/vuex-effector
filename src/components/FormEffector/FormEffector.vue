@@ -45,7 +45,6 @@ import { combine } from 'effector'
 import {
   store, counter, createRequestEvent, resetRequestEvent
 } from '@/storeEffector'
-/* eslint-disable no-debugger */
 
 export default {
 
