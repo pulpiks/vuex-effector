@@ -2,6 +2,7 @@
 import { createStore, createEvent, createStoreObject } from 'effector'
 import { TRequestState } from '@/store/state/request'
 import { userState } from '@/store/state/user'
+import { filtersState } from '@/store/state/filters'
 
 export const createRequestEvent = createEvent<TRequestState>()
 export const resetRequestEvent = createEvent()
@@ -22,6 +23,17 @@ export const authStore = createStore(userState)
 
 export const counter = createStore(0)
   .on(createRequestEvent, (state) => state + 1)
+
+export const createFilterEvent = createEvent<{
+  filter: string;
+  values: number[];
+}>()
+
+export const filtersStore = createStore(filtersState)
+  .on(createFilterEvent, (state, payload) => ({
+    ...state,
+    [payload.filter]: [...payload.values]
+  }))
 
 // counter.watch(c => console.log(c))
 

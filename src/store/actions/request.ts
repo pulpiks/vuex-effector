@@ -6,6 +6,7 @@ export const createRequest = 'createRequest'
 export type TRequestPayload = {
   title: string;
   description: string;
+  status: number;
 }
 
 export default {

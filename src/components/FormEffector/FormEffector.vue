@@ -1,5 +1,7 @@
 <template>
   <div>
+    <requests-list></requests-list>
+    <Filters @onChange="changeFilter" :selected="state.filters.statuses"></Filters>
     <div class="mt-3">
       <v-badge
       color="success"
@@ -33,7 +35,14 @@
         required
         :rules="rules['description']"
       ></v-text-field>
-
+      <v-col class="d-flex" cols="12" sm="6">
+        <v-select
+          :items="items"
+          v-model="formValues.status"
+          label="Choose status"
+          outlined
+        ></v-select>
+      </v-col>
       <v-btn class="mr-4" type="submit" color="success" :disabled="!isValid">submit</v-btn>
       <v-btn @click="clear">clear</v-btn>
     </v-form>
@@ -43,19 +52,27 @@
 <script lang="ts">
 import { combine } from 'effector'
 import {
-  store, counter, createRequestEvent, resetRequestEvent
+  store, counter, createRequestEvent, resetRequestEvent, createFilterEvent, filtersStore
 } from '@/storeEffector'
+import { statuses } from '../../constants/filters'
+import Filters from '../Filters/Filters.vue'
+import RequestsList from '../RequestsList/RequestsListEffector.vue'
 
 export default {
-
+  components: {
+    Filters,
+    RequestsList
+  },
   data () {
     return {
       formValues: {
         title: '',
-        description: ''
+        description: '',
+        status: ''
       },
       errors: {},
       isValid: false,
+      items: statuses.map(s => ({ text: s.name, value: s.id })),
       rules: {
         title: [
           (v: string) => !!v || 'Title is required',
@@ -71,10 +88,12 @@ export default {
     return combine(
       counter,
       store,
-      (counter, store) => {
+      filtersStore,
+      (counter, store, filtersStore) => {
         return {
           ...store,
-          counter
+          counter,
+          filters: filtersStore
         }
       }
     )
@@ -85,11 +104,17 @@ export default {
       this.isValid = isValid
     },
     submit () {
-      createRequestEvent(this.formValues)
+      createRequestEvent({ ...this.formValues })
     },
     clear () {
       // clear form
       resetRequestEvent()
+    },
+    changeFilter (selectedTypes: number[]) {
+      createFilterEvent({
+        filter: 'statuses',
+        values: selectedTypes
+      })
     }
   }
 }

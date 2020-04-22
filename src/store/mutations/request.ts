@@ -3,7 +3,6 @@ import { S } from '../types/state'
 
 export default {
   [createRequest] (state: S, payload: TRequestPayload) {
-    const { requests } = state
-    requests.push(payload)
+    state.requests = [...state.requests, payload]
   }
 }
