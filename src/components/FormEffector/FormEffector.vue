@@ -86,14 +86,12 @@ export default {
   effector () {
     // would create `state` in template
     return combine(
-      counter,
       store,
       filtersStore,
-      (counter, store, filtersStore) => {
+      (store, filters) => {
         return {
           ...store,
-          counter,
-          filters: filtersStore
+          filters
         }
       }
     )
