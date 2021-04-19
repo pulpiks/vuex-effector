@@ -3735,6 +3735,18 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
+effector-vue@^20.4.0:
+  version "20.5.1"
+  resolved "https://registry.yarnpkg.com/effector-vue/-/effector-vue-20.5.1.tgz#eb32ff7b63a924f30ffcf605a4b0f15aeb85a8f2"
+  integrity sha512-B5aIvCcTjB9JOW108aSAJcZ/BRWfH8HgcNFlL/cFaz2Deq0Kr0UetyhmkJRhV4z65eXBJB2wu+5PXFarfZVPjA==
+
+effector@^20.13.7:
+  version "20.17.2"
+  resolved "https://registry.yarnpkg.com/effector/-/effector-20.17.2.tgz#825987cdbf91b062e01074b5b47bcca9720efe94"
+  integrity sha512-Msbq6xem+Dal9BzReq6qqSKcb3ey4gVeJzG9S3wRVSPmErs8886STqGFGz9BbxrBR7Xy52cEMfI7KsBmmT1K7A==
+  dependencies:
+    symbol-observable "^1.2.0"
+
 ejs@^2.6.1:
   version "2.7.4"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.7.4.tgz#48661287573dcc53e366c7a1ae52c3a120eec9ba"
@@ -9059,9 +9071,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
@@ -9358,6 +9370,11 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+symbol-observable@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
 symbol-tree@^3.2.2:
   version "3.2.4"
